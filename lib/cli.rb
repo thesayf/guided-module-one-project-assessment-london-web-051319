@@ -9,6 +9,7 @@ def greeting
   space
   puts '#######WELCOME TO THE ART MANAGMENT DATABASE######'
   space
+  sleep(1.5)
   puts 'Press ***login*** or ***signup***'
   space
   login_choice = gets.chomp
@@ -77,6 +78,7 @@ def actions
         Painting.create({'title' => @title,'price' => @price, 'artist_id' => @@artist.id, 'gallery_id' => @chosen_gallery[0].id})
         space
         puts "###YOUR PAINTING HAS BEEN STORED###"
+        sleep(1.5)
         self.choices
 
 
@@ -96,6 +98,7 @@ elsif @command == "galleries"
   space
   puts result
   space
+  sleep(1.5)
   puts "TO ADD A PAINTING TO #{choice_gallery} PRESS ***add***"
   space
   puts "TO GO BACK PRESS ***back***"
@@ -116,6 +119,7 @@ elsif @command == "galleries"
     chosen_gallery = Gallery.all.select {|gallery| gallery.name == choice_gallery}
     Painting.create({'title' => title,'price' => price, 'artist_id' => @@artist.id, 'gallery_id' => chosen_gallery[0].id})
     puts "###Your Painting Painting has been added###"
+    sleep(1.5)
   end
     self.choices
   elsif end_choice == "back"
@@ -131,6 +135,7 @@ elsif @command == "find"
         space
         all_users_painting_names
         space
+        sleep(1.5)
         self.choices
 
   #####################################!!!!!DELETE FUNCTION!!!!!!!#############################################################################
@@ -138,7 +143,7 @@ elsif @command == "find"
 elsif @command == "delete"
         puts "#######which painting would you like to delete#######"
         space
-        puts all_users_painting_names
+        all_users_painting_names
         space
         @delete_choice = gets.chomp
         finds_painting_for_delete = get_all_users_paintings.select {|painting| painting.title == @delete_choice}
@@ -146,6 +151,7 @@ elsif @command == "delete"
         space
         puts "###YOUR PAINIING HAS BEEN DELETED###"
         space
+        sleep(1.5)
         self.choices
 
   #####################################!!!!!UPDATE FUNCTION!!!!!!!#############################################################################
@@ -154,7 +160,7 @@ elsif @command == "update"
         space
         puts "#######Please choose which painting you would like to move#######"
         space
-        puts all_users_painting_names
+        all_users_painting_names
         space
         @painting_update_choice = gets.chomp
         space
@@ -172,6 +178,7 @@ elsif @command == "update"
         space
         puts "###YOUR PAINIING LOCATION HAS BEEN CHANGED###"
         self.choices
+        sleep(1.5)
       else "this did not work"
 
 end
